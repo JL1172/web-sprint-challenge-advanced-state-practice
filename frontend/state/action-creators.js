@@ -57,11 +57,15 @@ export const postAnswer = (quizId,answerId) => dispatch => {
     // - Dispatch an action to set the server message to state
     // - Dispatch the fetching of the next quiz
 }
-export function postQuiz() {
-  return function (dispatch) {
+export const postQuiz = (quizValuesObj) => dispatch => {
+ axios.post("http://localhost:9000/api/quiz/new",quizValuesObj)
+ .then(res=> {
+    dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`))
+    dispatch(resetForm());
+ })
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state
     // - Dispatch the resetting of the form
-  }
+  
 }
 // ❗ On promise rejections, use log statements or breakpoints, and put an appropriate error message in state

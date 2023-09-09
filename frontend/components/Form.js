@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { inputChange } from '../state/action-creators'
+import { inputChange, postQuiz } from '../state/action-creators'
 
 
 export function Form(props) {
@@ -11,6 +11,12 @@ export function Form(props) {
 
   const onSubmit = evt => {
       evt.preventDefault(); 
+      const quizObj = {
+        question_text : props.formData.newQuestion,
+        true_answer_text : props.formData.newTrueAnswer,
+        false_answer_text : props.formData.newFalseAnswer,
+      }
+      props.postQuiz(quizObj)
   }
   const condition = props.formData.newQuestion.trim().length > 0 &&
   props.formData.newTrueAnswer.trim().length > 0 && 
@@ -42,4 +48,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{inputChange})(Form)
+export default connect(mapStateToProps,{inputChange, postQuiz})(Form)
