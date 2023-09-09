@@ -10,7 +10,7 @@ import Form from './Form'
 
 // REDUX IMPORTS
 import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux'
-import { Provider } from 'react-redux'
+import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from '../state/reducer'
 
@@ -22,7 +22,7 @@ export const resetStore = () => {
 }
 resetStore()
 
-export default function App() {
+export default function App(props) {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -30,7 +30,7 @@ export default function App() {
         <h1>Advanced State</h1>
         <nav>
           <NavLink id="wheelLink" to="/">Wheel</NavLink>
-          <NavLink id="quizLink" to="/quiz">Quiz</NavLink>
+          <NavLink onClick={()=> props} id="quizLink" to="/quiz">Quiz</NavLink>
           <NavLink id="formLink" to="/quiz-new">Form</NavLink>
         </nav>
         <Routes>

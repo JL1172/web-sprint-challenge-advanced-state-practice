@@ -7,6 +7,7 @@ import App from './components/App'
 import './styles/reset.css'
 import './styles/styles.css'
 
+
 const container = document.getElementById('root')
 const root = createRoot(container)
 
