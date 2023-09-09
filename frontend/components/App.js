@@ -13,12 +13,13 @@ import { legacy_createStore as createStore, applyMiddleware, compose } from 'red
 import { Provider, connect } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from '../state/reducer'
+import persistState from 'redux-localstorage'
 
 // REDUX STORE
 let store
 export const resetStore = () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-  store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+  store = createStore(reducer, composeEnhancers(applyMiddleware(thunk),persistState(null,"data")))
 }
 resetStore()
 
