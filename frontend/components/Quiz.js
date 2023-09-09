@@ -24,7 +24,7 @@ function Quiz(props) {
               })}
             </div>
 
-            <button id="submitAnswerBtn"
+            <button id="submitAnswerBtn" disabled = {!props.selectedAnswerState}
               onClick={() => props.postAnswer(props.quizState.quiz_id, props.selectedAnswerState)}>
               Submit answer</button>
           </>
